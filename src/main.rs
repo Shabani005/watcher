@@ -52,7 +52,8 @@ fn main() {
             if contents[i] != content {
                 println!("File changed!");
                 contents[i] = content;
-
+                
+                if seen_plus{
                 let mut cmd = Vec::new();
                 for j in plus_loc.unwrap() + 1..args.len(){
                     cmd.push(&args[j]);
@@ -61,6 +62,7 @@ fn main() {
                     .args(&cmd[1..])
                     .status()
                     .unwrap();
+                }
             }  
         }
         thread::sleep(time::Duration::from_secs(SECS));
